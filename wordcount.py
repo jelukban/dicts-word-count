@@ -1,7 +1,8 @@
 """Count words in file."""
+import sys
+from typing import final
 
-
-def tokenize(filename):
+def tokenize(filename = sys.argv[1]):
   """ Takes in a file and returns a list of each word in the text file
   """
   input_text = open(filename)
@@ -24,4 +25,22 @@ def tokenize(filename):
   input_text.close()
   return list_of_words
 
-# print(tokenize("twain.txt"))
+# print(tokenize())
+
+def count_words(words = tokenize()):
+  """ Takes in a list of strings and returns a dictionary of each string and its occurrence
+  """
+
+  final_word_dict = {}
+
+  for word in words:
+    word = word.lower()
+
+    if word in final_word_dict:
+      final_word_dict[word] += 1
+    else:
+      final_word_dict[word] = 1
+
+  return final_word_dict
+
+# print(count_words())
