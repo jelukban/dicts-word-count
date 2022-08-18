@@ -15,9 +15,9 @@ def tokenize(filename = sys.argv[1]):
       if not word:
         continue
 
-      if word[-1] in ",./]}!?'[{(-":
+      if word[-1] in ",./]}!?'[{(-" or word[-1] in '"':
         word = word[:-1]
-      elif word[0] in ",./]}!?'[{(-":
+      elif word[0] in ",./]}!?'[{(-" or word[-1] in '"':
         word = word[1:]
 
       list_of_words.append(word)
@@ -44,3 +44,11 @@ def count_words(words = tokenize()):
   return final_word_dict
 
 # print(count_words())
+
+def print_word_counts(words = count_words()):
+  """Takes in a dictionary of words and their occurence, prints out the key and value"""
+
+  for key, value in words.items():
+    print(f"{key} {value}")
+
+print(print_word_counts())
