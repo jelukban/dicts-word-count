@@ -36,10 +36,7 @@ def count_words(words = tokenize()):
   for word in words:
     word = word.lower()
 
-    if word in final_word_dict:
-      final_word_dict[word] += 1
-    else:
-      final_word_dict[word] = 1
+    final_word_dict[word] = final_word_dict.get(word, 0) + 1
 
   return final_word_dict
 
